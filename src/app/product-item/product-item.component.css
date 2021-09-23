@@ -3,7 +3,7 @@
   width: 200px;
   padding: 20px 20px 10px 20px;
   margin: 6px 6px;
-  border: 1px solid #33b5e5;
+  border: 0.5px solid #33b5e5;
 }
 
 .product-container {
@@ -14,6 +14,7 @@
   align-items: center;
   justify-content: flex-start;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  list-style-type: none;
 }
 
 .select-input {
