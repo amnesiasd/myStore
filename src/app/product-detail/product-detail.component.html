@@ -1,0 +1,23 @@
+<div class="product-detail">
+<div class="row">
+  <div class="col-md detail-image">
+    <img class="product-image" src="{{ product.url }}" alt="">
+  </div>
+  <div class="col-md detail-details">
+    <h3>{{ product.name }}</h3>
+    <p>{{ product.desc }}</p>
+    <p>{{ product.price }}</p>
+    <div>
+      <label for="amount">Amount:   </label>
+  
+      <select name="amount" id="amount">
+        <option value=1>1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+    </div>
+    <button class="btn btn-primary cart-button" (click)="addToCart()">Add To Cart</button>
+  </div>
+</div>
+</div>

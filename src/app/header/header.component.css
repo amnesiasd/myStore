@@ -1,0 +1,17 @@
+ul {
+  flex-direction: row;
+}
+
+li {
+  margin: 4px 10px;
+}
+
+a {
+  color: #284039;
+}
+
+nav {
+  flex-direction: column;
+  background-color: #36a382;
+  color: #284039;
+}
