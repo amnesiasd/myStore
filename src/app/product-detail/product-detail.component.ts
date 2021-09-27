@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '../models/product'
 
 @Component({
@@ -7,18 +7,21 @@ import { Product } from '../models/product'
   styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
-  product: Product = new Product();
+  @Input() product: Product = new Product();
 
-  constructor() { }
+  constructor(product: Product) { 
+    this.product = product;
+    console.log(product);
+  }
 
   ngOnInit(): void {
-    this.product = {
-      id: 1,
-      name:'Thingamajiggy',
-      price: 179.99,
-      url: 'https://images.unsplash.com/photo-1591076482161-42ce6da69f67?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-      desc: "Yada Yada"
-    };
+    // this.product = {
+    //   id: 1,
+    //   name:'Thingamajiggy',
+    //   price: 179.99,
+    //   url: 'https://images.unsplash.com/photo-1591076482161-42ce6da69f67?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    //   desc: "Yada Yada"
+    // };
   }
 
   addToCart() {

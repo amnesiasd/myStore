@@ -1,13 +1,6 @@
-<div >
 <ul class="product-index">
-  <li>
-    <app-product-item></app-product-item>
-  </li>
-  <li>
-    <app-product-item></app-product-item>
-  </li>
-  <li>
-    <app-product-item></app-product-item>
+  <li class="product-container">
+    <app-product-item *ngFor="let product of products" [newProduct] = "product"></app-product-item> 
   </li>
 </ul>
-</div>
+

@@ -1,8 +1,4 @@
 .product-index {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  max-width: 1024px;
   margin-bottom: 64px;
   list-style-type: none;
 }
@@ -10,4 +6,6 @@
 .product-container {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  align-items: stretch;
 }
