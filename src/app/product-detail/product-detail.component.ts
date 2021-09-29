@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '../models/product'
+import { ProductService } from '../product.service';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-product-detail',
@@ -7,25 +9,50 @@ import { Product } from '../models/product'
   styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
-  @Input() product: Product = new Product();
+  products: Product[] = [];
+  product: Product;
+  prodId: number;
+  quantity = [1,2,3,4,5,6,7,8,9];
+  selectedQuantity: number = 1;
 
-  constructor(product: Product) { 
-    this.product = product;
-    console.log(product);
+  constructor(private productService: ProductService,
+    private route: ActivatedRoute) { 
   }
 
   ngOnInit(): void {
-    // this.product = {
-    //   id: 1,
-    //   name:'Thingamajiggy',
-    //   price: 179.99,
-    //   url: 'https://images.unsplash.com/photo-1591076482161-42ce6da69f67?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-    //   desc: "Yada Yada"
-    // };
+
+    // this.prodId = Number(this.route.snapshot.paramMap.get('id'));
+    // this.product = this.productService.getSingleProduct(this.prodId);
+    // console.log("Success");
+    // console.log(this.product.name);
+    
+    this.productService.getProducts().subscribe((res) => {
+      for (let index = 0; index < res.length; index++) {
+        const element = res[index];        
+      };
+      this.products = res;
+      for (let i = 0; i < this.products.length; i++) {
+        const prod = this.products[i];        
+        this.prodId = Number(this.route.snapshot.paramMap.get('id'));
+        if( prod.id === this.prodId){
+          this.product = prod;
+          return;
+        }      
+      }
+    });    
+  }
+
+  ngOnDestroy(): void {
+    this.prodId = null;
+    this.product = null;
   }
 
   addToCart() {
-    alert(`You've added 2 items at ${this.product.price} to cart!`);
+    alert(`You've added ${this.selectedQuantity} items at ${this.product.price} to cart!`);
+  }
+
+  changeQuantity(quantity){
+    this.selectedQuantity = quantity;
   }
 
 }
