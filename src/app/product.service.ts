@@ -7,21 +7,29 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
-  public products: any = [];  
+  products: Product[] = [];  
 
   constructor(private httpClient: HttpClient) {    
    };
 
-  getProducts(): Observable<Product[]> {
+  setUpProducts() {
     return this.httpClient.get<Product[]>("../assets/data.json");
-  }
+  };
 
-  getSingleProduct(prodId: Number): Product {
+  getSingleProduct(prodId: number): Product {
     for (let i = 0; i < this.products.length; i++) {      
-      if(this.products[i] === prodId){
+      if(this.products[i].id === prodId){
         return this.products[i];
       }      
     };
     return null; 
   }; 
+
+  getProducts(): Product[] {
+    return this.products;
+  }
+
+  setProducts(prods: Product[]){
+    this.products = prods;
+  }
 }
