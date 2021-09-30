@@ -2,15 +2,5 @@
   <a routerLink="/product/{{newProduct.id }}"><img class="product-image" src="{{ newProduct.url }}" alt="Item pic"></a>  
   <h4 class="product-title">{{ newProduct.name }}</h4>
   <h6 class="product-price">{{ newProduct.price }}</h6>
-  <div>
-    <label for="amount">Amount:   </label>
-
-    <select name="amount" id="amount">
-      <option value=1>1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-    </select>
-  </div>
   <button class="btn btn-primary cart-button">Add To Cart</button>
 </div>

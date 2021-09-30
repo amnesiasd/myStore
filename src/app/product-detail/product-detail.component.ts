@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '../models/product'
 import { ProductService } from '../product.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -16,30 +17,20 @@ export class ProductDetailComponent implements OnInit {
   selectedQuantity: number = 1;
 
   constructor(private productService: ProductService,
-    private route: ActivatedRoute) { 
+    private cartService: CartService,
+    private route: ActivatedRoute,
+    private router: Router) { 
   }
 
-  ngOnInit(): void {
-
-    // this.prodId = Number(this.route.snapshot.paramMap.get('id'));
-    // this.product = this.productService.getSingleProduct(this.prodId);
-    // console.log("Success");
-    // console.log(this.product.name);
-    
-    this.productService.getProducts().subscribe((res) => {
-      for (let index = 0; index < res.length; index++) {
-        const element = res[index];        
-      };
-      this.products = res;
-      for (let i = 0; i < this.products.length; i++) {
-        const prod = this.products[i];        
-        this.prodId = Number(this.route.snapshot.paramMap.get('id'));
-        if( prod.id === this.prodId){
-          this.product = prod;
-          return;
-        }      
-      }
-    });    
+  ngOnInit(): void {    
+    for (let i = 0; i < this.productService.products.length; i++) {
+      const prod = this.productService.products[i];        
+      this.prodId = Number(this.route.snapshot.paramMap.get('id'));
+      if( prod.id === this.prodId){
+        this.product = prod;
+        return;
+      }            
+    };    
   }
 
   ngOnDestroy(): void {
@@ -49,6 +40,8 @@ export class ProductDetailComponent implements OnInit {
 
   addToCart() {
     alert(`You've added ${this.selectedQuantity} items at ${this.product.price} to cart!`);
+    this.cartService.addToCart(this.prodId, this.selectedQuantity);  
+    this.router.navigate(['']);
   }
 
   changeQuantity(quantity){

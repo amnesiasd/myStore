@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Product } from '../models/product';
 import { ProductService } from '../product.service';
 import { Observable } from 'rxjs';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-product-list',
@@ -13,7 +14,8 @@ import { Observable } from 'rxjs';
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService,
+    private cartService: CartService) { }
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe((res) => {
@@ -21,7 +23,9 @@ export class ProductListComponent implements OnInit {
         const element = res[index];        
       };
       this.products = res;
+      this.productService.products = res;
     });
+    console.log(this.cartService.cart.length);
   }
 
 }

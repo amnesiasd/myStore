@@ -7,9 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
-  products: any = [];
-  prodId: Number;
-  selectedProduct: Product = new Product();
+  public products: any = [];  
 
   constructor(private httpClient: HttpClient) {    
    };
@@ -19,22 +17,11 @@ export class ProductService {
   }
 
   getSingleProduct(prodId: Number): Product {
-    this.getProducts().subscribe((res) => {
-      // for (let index = 0; index < res.length; index++) {
-      //   const element = res[index];        
-      // };
-      console.log(prodId);
-      this.products = res;
-    
-      //this.getProducts().subscribe(prods => this.products = prods);;
-      console.log(this.products);
-      for (let i = 0; i < this.products.length; i++) {
-        this.selectedProduct = this.products[i];        
-        if(this.selectedProduct.id === prodId){
-          return this.selectedProduct;
-        }      
-      };      
-    });
-    return this.selectedProduct; 
+    for (let i = 0; i < this.products.length; i++) {      
+      if(this.products[i] === prodId){
+        return this.products[i];
+      }      
+    };
+    return null; 
   }; 
 }
