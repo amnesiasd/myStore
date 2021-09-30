@@ -10,6 +10,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './header/header.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { CartItemComponent } from './cart-item/cart-item.component';
+import { CartListComponent } from './cart-list/cart-list.component';
+import { CartPageComponent } from './cart-page/cart-page.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { CartItemComponent } from './cart-item/cart-item.component';
     ProductItemComponent,
     HeaderComponent,
     ProductDetailComponent,
-    CartItemComponent
+    CartItemComponent,
+    CartListComponent,
+    CartPageComponent
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import { ProductService } from './product.service';
 })
 export class CartService {
   cart: Cart[] = [];
+  cartTotal: number = 0.00;
 
   constructor(private productService: ProductService) { }
 
@@ -23,5 +24,12 @@ export class CartService {
 
   getCart(): Cart[] {
     return this.cart;
+  }  
+
+  calculateCartTotal() {
+    this.cart.forEach(item => {
+      this.cartTotal += (item.quantity * item.price);
+    });
+    console.log(this.cartTotal);    
   }
 }
