@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.name-container,
+.city-state-container,
+.zip-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.address-container {
+  display: flex;
+  flex-flow: column;
+}
+
+.name-section,
+.city-state-section,
+.zip-section {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 10px;
+}
+
+.address-section {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 10px;
+}
+
+.checkout-btn {
+  margin: 0 10px;
+}
+
+.cart-list-item {
+  list-style-type: none;
+}

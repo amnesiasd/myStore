@@ -1,0 +1,43 @@
+<app-header></app-header>
+<div class="container">
+  <form action="">
+    <div class="name-container">
+      <div class="name-section">
+        <h5>First Name</h5>
+        <input type="text" name="firstName" [(ngModel)]="firstName">
+      </div>
+      <div class="name-section">
+        <h5>Last Name</h5>
+        <input type="text" name="lastName" [(ngModel)]="lastName">
+      </div>            
+    </div>
+    <div class="address-container">
+      <div class="address-section">
+        <h5>Street Address</h5>
+        <input type="text" name="street" [(ngModel)]="street">
+      </div>
+    </div>
+    <div class="city-state-container">
+      <div class="city-state-section">
+        <h5>City</h5>
+        <input type="text" name="city" [(ngModel)]="city">
+      </div>
+      <div class="city-state-section">
+        <h5>State</h5>
+        <input type="text" name="state" [(ngModel)]="state">
+      </div>            
+    </div>
+    <div class="zip-container">
+      <div class="zip-section">
+        <h5>Zip Code</h5>
+        <input type="text" name="zip" [(ngModel)]="zip">
+      </div>           
+    </div>
+    <br>
+    <ul *ngFor="let item of cart">
+      <li class="cart-list-item">({{ item.quantity }}) {{ item.name }}  ${{ item.price*item.quantity }}</li>
+    </ul> 
+    <input type="submit" value="Checkout" class="btn btn-primary checkout-btn">     
+  </form>
+  
+</div>

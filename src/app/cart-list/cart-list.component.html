@@ -1,7 +1,7 @@
 <div class="checkout">
   <div *ngIf="cartTotal > 0; else noItemsInCart">
     <p>Cart Total - ${{ cartTotal }}</p>  
-    <button class="btn btn-success">Checkout</button> 
+    <button class="btn btn-success" [routerLink]="['/checkout']">Checkout</button> 
 </div> 
 </div>
 <ul class="cart-list">
