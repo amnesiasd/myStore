@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from '../models/product';
 import { CartService } from '../cart.service';
 import { Cart } from '../models/cart';
@@ -13,6 +13,7 @@ export class CartItemComponent implements OnInit {
   quantity = [1,2,3,4,5,6,7,8,9];
   quantityUpdate: number;
   hideButton: boolean = false;
+  @Output() checkoutTotalUpdate = new EventEmitter();
 
   constructor(private cartService: CartService) { }
 
@@ -34,7 +35,7 @@ export class CartItemComponent implements OnInit {
   updateCart(){
     this.cartItem.quantity = this.quantityUpdate;
     console.log(this.cartItem);
-    this.cartService.calculateCartTotal();
+    this.checkoutTotalUpdate.emit(this.cartService.calculateCartTotal());
     this.hideButton = false;
   }
 

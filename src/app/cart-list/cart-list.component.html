@@ -1,5 +1,14 @@
+<div class="checkout">
+  <div *ngIf="cartTotal > 0; else noItemsInCart">
+    <p>Cart Total - ${{ cartTotal }}</p>  
+    <button class="btn btn-success">Checkout</button> 
+</div> 
+</div>
 <ul class="cart-list">
   <li>
-    <app-cart-item  *ngFor = "let cart of cartItems" [cartItem] = "cart"></app-cart-item>
+    <app-cart-item  *ngFor = "let cart of cartItems" [cartItem] = "cart" (checkoutTotalUpdate)="updateCheckout()"></app-cart-item>
   </li>
 </ul>
+<ng-template #noItemsInCart>
+  <h2>There are no items in Cart</h2>
+</ng-template>

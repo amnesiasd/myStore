@@ -16,6 +16,11 @@ export class CartListComponent implements OnInit {
 
   ngOnInit(): void {
     this.cartItems = this.cartService.getCart();
+    this.cartTotal = Number(this.cartService.calculateCartTotal().toFixed(2));
+  }
+
+  updateCheckout(){
+    this.cartTotal = Number(this.cartService.calculateCartTotal().toFixed(2));
   }
 
 }

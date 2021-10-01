@@ -1,3 +1,7 @@
 .cart-list {
   list-style-type: none;
 }
+
+.checkout {
+  float: right;
+}

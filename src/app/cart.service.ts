@@ -26,10 +26,11 @@ export class CartService {
     return this.cart;
   }  
 
-  calculateCartTotal() {
+  calculateCartTotal(): number {
+    let total: number = 0.00;
     this.cart.forEach(item => {
-      this.cartTotal += (item.quantity * item.price);
+      total += Number(((item.quantity * item.price)).toFixed(2));
     });
-    console.log(this.cartTotal);    
+    return total;    
   }
 }
