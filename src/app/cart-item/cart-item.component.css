@@ -31,12 +31,19 @@
 
 .update-button {
   height: fit-content;
+  margin-right: 5px;
 }
 
 .amount-section,
 .button-section {
   display: flex;
   justify-content: center;
-  flex-direction: column;
   align-items: center;
+}
+.amount-section {
+  flex-direction: column;
+}
+
+.button-section {
+  flex-direction: row;
 }

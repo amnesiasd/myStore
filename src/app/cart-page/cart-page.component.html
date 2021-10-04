@@ -1,2 +1,2 @@
-<app-header></app-header>
-<app-cart-list></app-cart-list>
+<app-header [cartQuantity]="upCartTotal"></app-header>
+<app-cart-list (cartQuantityEvent)="updateCartTotal()"></app-cart-list>

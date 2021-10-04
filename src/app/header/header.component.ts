@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CartService } from '../cart.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { CartService } from '../cart.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  cartQuantity: number = 0;
+  @Input() cartQuantity: number = 0;
 
   constructor(private cartService: CartService) {     
   }

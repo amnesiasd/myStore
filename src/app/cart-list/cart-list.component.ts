@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MonoTypeOperatorFunction } from 'rxjs';
 import { CartService } from '../cart.service';
 import { Cart } from '../models/cart';
@@ -11,6 +11,7 @@ import { Cart } from '../models/cart';
 export class CartListComponent implements OnInit {
   cartItems: Cart[] = [];
   cartTotal: number = 0.00;
+  @Output() cartQuantityEvent = new EventEmitter();
 
   constructor(private cartService: CartService) { }
 
@@ -21,6 +22,6 @@ export class CartListComponent implements OnInit {
 
   updateCheckout(){
     this.cartTotal = Number(this.cartService.calculateCartTotal().toFixed(2));
+    this.cartQuantityEvent.emit();
   }
-
 }

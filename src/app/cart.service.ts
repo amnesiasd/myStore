@@ -37,6 +37,14 @@ export class CartService {
   emptyCart(): void {
     this.cart = [];
     this.cartTotal = 0.00;
-    console.log(this.cart);
+  }
+
+  removeFromCart(prodId: number) {    
+    for (let i = 0; i < this.cart.length; i++) {
+      const id = this.cart[i].id;
+      if (prodId === id) {
+        this.cart.splice(i, 1);
+      }      
+    }        
   }
 }

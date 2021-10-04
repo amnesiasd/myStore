@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import * as EventEmitter from 'events';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-cart-page',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart-page.component.css']
 })
 export class CartPageComponent implements OnInit {
+  upCartTotal: number;
 
-  constructor() { }
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
+  }
+
+  updateCartTotal(){
+    console.log(this.cartService.getCart().length);
+    this.upCartTotal = this.cartService.getCart().length;
   }
 
 }

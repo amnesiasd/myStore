@@ -15,5 +15,6 @@
     </div>
     <div class="button-section">
       <button class="btn btn-primary update-button" (click)="updateCart()" [disabled]="!this.hideButton">Update Cart</button>
+      <button class="btn btn-danger" (click)="removeFromCart(cartItem.id)">X</button>
     </div>
   </div>

@@ -14,6 +14,7 @@ export class CartItemComponent implements OnInit {
   quantityUpdate: number;
   hideButton: boolean = false;
   @Output() checkoutTotalUpdate = new EventEmitter();
+  @Output() cartQuantityEvent = new EventEmitter();
 
   constructor(private cartService: CartService) { }
 
@@ -37,6 +38,14 @@ export class CartItemComponent implements OnInit {
     console.log(this.cartItem);
     this.checkoutTotalUpdate.emit(this.cartService.calculateCartTotal());
     this.hideButton = false;
+  }
+
+  removeFromCart(prodId: number){
+    if (confirm("Are you sure you want to remove from cart?")) {
+      this.cartService.removeFromCart(prodId);
+      this.checkoutTotalUpdate.emit(this.cartService.calculateCartTotal());
+      this.cartQuantityEvent.emit();
+    }
   }
 
 }
