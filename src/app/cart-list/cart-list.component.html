@@ -1,5 +1,5 @@
-<div class="checkout">
-  <div *ngIf="cartTotal > 0; else noItemsInCart">
+<div class="checkout" *ngIf="cartTotal > 0; else noItemsInCart">
+  <div >
     <p>Cart Total - ${{ cartTotal }}</p>  
     <button class="btn btn-success" [routerLink]="['/checkout']">Checkout</button> 
 </div> 
@@ -10,5 +10,5 @@
   </li>
 </ul>
 <ng-template #noItemsInCart>
-  <h2>There are no items in Cart</h2>
+  <h2 class="noItems">There are no items in Cart</h2>
 </ng-template>

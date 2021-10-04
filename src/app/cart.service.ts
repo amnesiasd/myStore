@@ -33,4 +33,10 @@ export class CartService {
     });
     return total;    
   }
+
+  emptyCart(): void {
+    this.cart = [];
+    this.cartTotal = 0.00;
+    console.log(this.cart);
+  }
 }

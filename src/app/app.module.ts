@@ -14,6 +14,7 @@ import { CartListComponent } from './cart-list/cart-list.component';
 import { CartPageComponent } from './cart-page/cart-page.component';
 import { CheckoutFormComponent } from './checkout-form/checkout-form.component';
 import { FormsModule } from '@angular/forms';
+import { OrderCompleteComponent } from './order-complete/order-complete.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FormsModule } from '@angular/forms';
     CartItemComponent,
     CartListComponent,
     CartPageComponent,
-    CheckoutFormComponent
+    CheckoutFormComponent,
+    OrderCompleteComponent
   ],
   imports: [
     BrowserModule,

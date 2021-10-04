@@ -24,4 +24,8 @@ export class CheckoutFormComponent implements OnInit {
     this.cart = this.cartService.getCart();
   }
 
+  completeOrder() {
+    this.cartService.emptyCart();    
+  }
+
 }

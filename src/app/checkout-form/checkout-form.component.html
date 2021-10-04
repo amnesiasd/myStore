@@ -1,43 +1,59 @@
 <app-header></app-header>
 <div class="container">
-  <form action="">
+  <form #form="ngForm" (ngSubmit)="completeOrder()">
     <div class="name-container">
       <div class="name-section">
         <h5>First Name</h5>
-        <input type="text" name="firstName" [(ngModel)]="firstName">
+        <input required type="text" name="firstName" [(ngModel)]="firstName" #fName="ngModel" minlength="2">
+        <div *ngIf="fName.invalid && (fName.dirty || fName.touched)">
+          <div *ngIf="fName.errors?.required">First name is required.</div>
+        </div>
       </div>
       <div class="name-section">
         <h5>Last Name</h5>
-        <input type="text" name="lastName" [(ngModel)]="lastName">
+        <input type="text" name="lastName" [(ngModel)]="lastName" required #lName="ngModel">
+        <div *ngIf="lName.invalid && (lName.dirty || lName.touched)">
+          <div *ngIf="lName.errors?.required">Last name is required.</div>
+        </div>
       </div>            
     </div>
     <div class="address-container">
       <div class="address-section">
         <h5>Street Address</h5>
-        <input type="text" name="street" [(ngModel)]="street">
+        <input type="text" name="street" [(ngModel)]="street" required>
       </div>
     </div>
     <div class="city-state-container">
       <div class="city-state-section">
         <h5>City</h5>
-        <input type="text" name="city" [(ngModel)]="city">
+        <input type="text" name="city" [(ngModel)]="city" required>
       </div>
       <div class="city-state-section">
         <h5>State</h5>
-        <input type="text" name="state" [(ngModel)]="state">
+        <input type="text" name="state" [(ngModel)]="state" required maxlength="2" #st="ngModel">
+        <div *ngIf="st.invalid && (st.dirty || st.touched)">
+          <div *ngIf="st.errors?.maxlength">Use 2 letter abbrev</div>
+        </div>
       </div>            
     </div>
     <div class="zip-container">
       <div class="zip-section">
         <h5>Zip Code</h5>
-        <input type="text" name="zip" [(ngModel)]="zip">
+        <input type="text" name="zip" [(ngModel)]="zip" required minLength= "5" maxlength="5" pattern="[0-9]*" #zipCode="ngModel">
+        <div *ngIf="zipCode.invalid && (zipCode.dirty || zipCode.touched)">
+          <div *ngIf="zipCode.errors?.pattern">Use only numbers</div>
+        </div>
       </div>           
     </div>
     <br>
     <ul *ngFor="let item of cart">
       <li class="cart-list-item">({{ item.quantity }}) {{ item.name }}  ${{ item.price*item.quantity }}</li>
     </ul> 
-    <input type="submit" value="Checkout" class="btn btn-primary checkout-btn">     
+    <input routerLink='/complete' type="submit" [disabled]="form.invalid" value="Checkout" class="btn btn-primary checkout-btn">
   </form>
-  
+  <div *ngIf="form.invalid && (form.dirty || form.touched)">
+    <div *ngIf="form.errors?.required">
+      Please fill out the whole form.
+    </div>
+  </div>
 </div>

@@ -1,0 +1,12 @@
+.thankYou {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 25px auto;
+  width: fit-content;
+  align-items: center;
+}
+
+.returnBtn {
+  margin-top: 20px;
+}
