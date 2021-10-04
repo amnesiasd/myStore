@@ -11,8 +11,8 @@
     <div>
       <label for="amount">Amount:   </label>
   
-      <select name="amount" id="amount" (change)="changeQuantity($event.target.value)">
-        <option *ngFor="let quan of quantity" value="{{ quan }}">{{ quan }}</option>
+      <select [(ngModel)]="quantity" name="amount" id="amount" (ngModelChange)="changeQuantity($event)">
+        <option *ngFor="let quan of quantity" (ngValue)="quan">{{ quan }}</option>
       </select>
     </div>
     <button class="btn btn-primary cart-button" (click)="addToCart()">Add To Cart</button>

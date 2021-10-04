@@ -8,10 +8,9 @@
       <p>{{ cartItem.price }}</p>
     </div>
     <div class="col-md amount-section">
-        <label for="amount">Amount:   </label>
-    
-        <select name="amount" id="amount" (change)="changeQuantity($event.target.value)">
-          <option *ngFor="let quan of quantity" value="{{ quan }}" [selected]="cartItem.quantity == quan">{{ quan }}</option>
+        <label for="amount">Amount:   </label>    
+        <select [(ngModel)]="cartItem.quantity" name="amount" id="amount" (ngModelChange)="changeQuantity($event)">
+          <option *ngFor="let quan of quantity" (ngValue)="quan" [selected]="cartItem.quantity == quan">{{ quan }}</option>
         </select>
     </div>
     <div class="button-section">
